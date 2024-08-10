@@ -22,3 +22,14 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
+// Untuk inspeksi
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/inspeksi-mobil', function () {
+        return Inertia::render('InspeksiMobil');
+    })->name('inspeksi.mobil');
+});
